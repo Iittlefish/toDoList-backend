@@ -1,5 +1,5 @@
 {
-  "name": "toDoList-backend",
+  "name": "todolist-backend",
   "version": "1.0.0",
   "description": "the backend of toDoList.",
   "main": "index.js",
@@ -15,6 +15,7 @@
     "mysql2": "^2.2.5",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.0.0",
+    "tsoa": "^3.8.0",
     "typeorm": "^0.2.32",
     "typescript": "^4.2.4"
   }
