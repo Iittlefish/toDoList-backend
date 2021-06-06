@@ -4,8 +4,22 @@
   "description": "the backend of toDoList.",
   "main": "index.js",
   "repository": "git@github.com:Iittlefish/toDoList-backend.git",
-  "author": "Iittlefish <st1030283215852@gmail.com>",
+  "contributors": [
+
+  ],
   "license": "MIT",
+  "scripts": {
+    "tsc":"tsc",
+    "lint": "eslint src/**/*.ts test/**/*.ts",
+    "typeorm:cli": "ts-node ./node_modules/typeorm/cli.js",
+    "typeorm:script": "ts-node scripts/typeorm.ts",
+    "clean": "sh ./scripts/clean.sh",
+    "build": "sh ./scripts/build.sh",
+    "build:swagger": "sh ./scripts/build.sh swagger",
+    "serve": "yarn run build && node dist/server.js",
+    "serve:swagger": "yarn run build:swagger && node dist/server.js",
+    "serve:quick": "node dist/server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
