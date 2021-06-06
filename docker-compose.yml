@@ -4,7 +4,7 @@ services:
   mysql:
     image: mysql:latest
     environment:
-      MYSQL_DATABASE: 'toDoListDB '
+      MYSQL_DATABASE: 'toDoList'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: '123456'
       MYSQL_ROOT_PASSWORD: 'root'
