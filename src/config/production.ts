@@ -1,4 +1,5 @@
 import { ConnectionOptions } from 'typeorm'
+import { Group, ToDo, User } from '@/entry';
 
 export default {
   type: 'mysql',
@@ -8,7 +9,7 @@ export default {
   password: '123456',
   database: 'todolist',
   dropSchema: false,
-  entities: [],
+  entities: [Group, ToDo, User],
   extra:{
     charset: 'utf8_unicode_ci',
   },
