@@ -23,17 +23,24 @@ export class ToDo {
     })
     description: string;
 
+    @Column({
+        type: 'boolean'
+    })
+    isFinish: boolean;
+
     constructor(params: ToDo = {} as ToDo) {
         const {
             tid,
             uid,
             gid,
             description,
+            isFinish
         } = params
         this.tid = tid;
         this.uid = uid;
         this.gid = gid;
         this.description = description;
+        this.isFinish = isFinish;
     }
 
 }

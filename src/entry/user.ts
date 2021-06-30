@@ -19,7 +19,7 @@ export class User {
     pwd: string;
 
     @Column({
-        type: 'string'
+        type: 'boolean'
     })
     isAuth: boolean;
 
