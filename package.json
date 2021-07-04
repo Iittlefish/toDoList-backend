@@ -4,12 +4,10 @@
   "description": "the backend of toDoList.",
   "main": "index.js",
   "repository": "git@github.com:Iittlefish/toDoList-backend.git",
-  "contributors": [
-
-  ],
+  "contributors": [],
   "license": "MIT",
   "scripts": {
-    "tsc":"tsc",
+    "tsc": "tsc",
     "lint": "eslint src/**/*.ts test/**/*.ts",
     "typeorm:cli": "ts-node ./node_modules/typeorm/cli.js",
     "typeorm:script": "ts-node scripts/typeorm.ts",
@@ -21,6 +19,7 @@
     "serve:quick": "node dist/server.js"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
@@ -45,7 +44,7 @@
     "ts-node": "^10.0.0",
     "typescript": "^4.3.2"
   },
-  "_moduleAliases":{
-    "@":"src/*"
+  "_moduleAliases": {
+    "@": "src/*"
   }
 }
