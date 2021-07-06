@@ -4,15 +4,15 @@
   "description": "the backend of toDoList.",
   "main": "index.js",
   "repository": "git@github.com:Iittlefish/toDoList-backend.git",
-  "contributors": [
-
-  ],
+  "contributors": [],
   "license": "MIT",
   "scripts": {
-    "tsc":"tsc",
-    "lint": "eslint src/**/*.ts test/**/*.ts",
+    "tsc": "tsc",
+    "lint": "eslint src/**/*.ts",
     "typeorm:cli": "ts-node ./node_modules/typeorm/cli.js",
     "typeorm:script": "ts-node scripts/typeorm.ts",
+    "typeorm:migration:run": "yarn typeorm:script --migrations=run",
+    "typeorm:migration:revert": "yarn typeorm:script --migrations=revert",
     "clean": "sh ./scripts/clean.sh",
     "build": "sh ./scripts/build.sh",
     "build:swagger": "sh ./scripts/build.sh swagger",
@@ -33,6 +33,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.12",
+    "@types/minimist": "^1.2.1",
     "@types/swagger-ui-express": "^4.1.2",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
@@ -45,7 +46,7 @@
     "ts-node": "^10.0.0",
     "typescript": "^4.3.2"
   },
-  "_moduleAliases":{
-    "@":"src/*"
+  "_moduleAliases": {
+    "@": "dist"
   }
 }
