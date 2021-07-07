@@ -4,7 +4,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 export class Group {
   @PrimaryGeneratedColumn('increment', {
     type: 'int',
-    unsigned: true
+    unsigned: true,
   })
   gid: number;
 

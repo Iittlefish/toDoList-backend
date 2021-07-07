@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner, Table, TableIndex, TableForeignKey } f
 export class init1624953702083 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await this.createTable(queryRunner);
+    await this.createTables(queryRunner);
     await this.createKeyAndIndices(queryRunner)
   }
 
@@ -11,23 +11,13 @@ export class init1624953702083 implements MigrationInterface {
     await this.dropTables(queryRunner)
   }
 
-  private async createTable(query: QueryRunner): Promise<void> {
+  private async createTables(query: QueryRunner): Promise<void> {
     // Group
     await query.createTable(new Table({
       name: 'group',
       columns: [
-        { name: 'gid', type: 'int', isPrimary: true },
-        { name: 'name', type: 'string' }
-      ]
-    }), true);
-    // ToDo
-    await query.createTable(new Table({
-      name: 'todo',
-      columns: [
-        { name: 'tid', type: 'int', unsigned: true, isPrimary: true },
-        { name: 'uid', type: 'int' },
-        { name: 'gid', type: 'string' },
-        { name: 'description', type: 'text' }
+        { name: 'gid', type: 'int', unsigned: true, isPrimary: true },
+        { name: 'name', type: 'text' }
       ]
     }), true);
     // User
@@ -35,11 +25,23 @@ export class init1624953702083 implements MigrationInterface {
       name: 'user',
       columns: [
         { name: 'uid', type: 'int', unsigned: true, isPrimary: true },
-        { name: 'account', type: 'string' },
-        { name: 'pwd', type: 'string' },
+        { name: 'account', type: 'text' },
+        { name: 'pwd', type: 'text' },
         { name: 'isAuth', type: 'boolean' }
       ]
     }), true);
+    // ToDo
+    await query.createTable(new Table({
+      name: 'todo',
+      columns: [
+        { name: 'tid', type: 'int', unsigned: true, isPrimary: true },
+        { name: 'uid', type: 'int', unsigned: true },
+        { name: 'gid', type: 'int', unsigned: true  },
+        { name: 'description', type: 'text' },
+        { name: 'isFinish', type: 'boolean' }
+      ]
+    }), true);
+
 
   }
 
@@ -50,6 +52,12 @@ export class init1624953702083 implements MigrationInterface {
         name: 'gid_idx', columnNames: ['gid']
       })
     ])
+    // User
+    await query.createIndices('user', [
+      new TableIndex({
+        name: 'uid_idx', columnNames: ['uid']
+      })
+    ])
 
     // Todo
     await query.createIndices('todo', [
@@ -57,27 +65,22 @@ export class init1624953702083 implements MigrationInterface {
         name: 'tid', columnNames: ['tid']
       }),
       new TableIndex({
-        name: 'uid_fk_idx', columnNames: ['uid']
+        name: 'todo_fk_user_idx', columnNames: ['uid']
       }),
       new TableIndex({
-        name: 'gid_fk_idx', columnNames: ['gid']
+        name: 'todo_fk_group_idx', columnNames: ['gid']
       })
     ])
     await query.createForeignKeys('todo', [
       new TableForeignKey({
-        name: 'uid_fk', columnNames: ['uid'], referencedTableName: 'user', referencedColumnNames: ['uid']
+        name: 'todo_fk_user', columnNames: ['uid'], referencedTableName: 'user', referencedColumnNames: ['uid']
       }),
       new TableForeignKey({
-        name: 'gid_fk', columnNames: ['gid'], referencedTableName: 'group', referencedColumnNames: ['gid']
+        name: 'todo_fk_group', columnNames: ['gid'], referencedTableName: 'group', referencedColumnNames: ['gid']
       })
     ])
 
-    // User
-    await query.createIndices('user', [
-      new TableIndex({
-        name: 'gid_idx', columnNames: ['gid']
-      })
-    ])
+
 
   }
 

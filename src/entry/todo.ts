@@ -9,14 +9,16 @@ export class ToDo {
   tid: number;
 
   @Column({
-    type: 'int'
+    type: 'int',
+    unsigned: true
   })
-  uid: string;
+  uid: number;
 
   @Column({
-    type: 'int'
+    type: 'int',
+    unsigned: true
   })
-  gid: string;
+  gid: number;
 
   @Column({
     type: 'text'
