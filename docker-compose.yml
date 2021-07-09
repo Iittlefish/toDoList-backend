@@ -9,12 +9,12 @@ services:
       MYSQL_PASSWORD: '123456'
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
-      - "127.0.0.1:3304:3306"
+      - "127.0.0.1:3306:3306"
   phpmyadmin:
     depends_on:
       - mysql
     image: phpmyadmin/phpmyadmin:latest
     ports:
-      - "127.0.0.1:3002:80"
+      - "127.0.0.1:3001:80"
     environment:
       PMA_HOST: mysql

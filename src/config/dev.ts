@@ -6,6 +6,6 @@ import * as prodConfig from './production';
 export default {
   ...prodConfig.default,
   dropSchema: true,
-  //migrationsRun: true,
+  migrationsRun: true,
   logging: 'all',
 } as ConnectionOptions;

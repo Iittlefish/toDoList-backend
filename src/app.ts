@@ -19,5 +19,9 @@ export default function appInit(typeormConfig:ConnectionOptions):Promise<Express
 
     const swaggerHtml = swaggerUi.generateHTML(await import('./swagger.json'));
     app.use('/docs', swaggerUi.serve, (_: Request, res: Response) => res.send(swaggerHtml));
+
+    await createConnection(typeormConfig);
+
+    return resolve(app);
   })
 }
