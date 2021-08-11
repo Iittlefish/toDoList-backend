@@ -3,6 +3,8 @@ import express,{Express,Request,Response} from 'express';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 
+import {testTypeorm} from '@/service/test';
+import {RegisterRoutes} from '@/routes' ;
 
 const app = express();
 
@@ -22,6 +24,13 @@ export default function appInit(typeormConfig:ConnectionOptions):Promise<Express
 
     await createConnection(typeormConfig);
 
+    testTypeorm.init();
+
+    RegisterRoutes(app);
+
     return resolve(app);
   })
+
+  //testTypeorm.init();
+
 }

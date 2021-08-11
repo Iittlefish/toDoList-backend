@@ -8,7 +8,7 @@ sh $PWD/scripts/clean.sh
 
 echo "Generating tsoa Route"
 tsoa routes
-# npm run tsoa:route
+npm run tsoa:route
 
 if [ "${1}" = "swagger" ]; then
   echo "Generating tsoa spec"

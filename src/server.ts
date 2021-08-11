@@ -1,6 +1,6 @@
 // src/server.ts
 import 'module-alias/register';
-import 'reflect-metadatda';
+//import 'reflect-metadatda';
 import { ConnectionOptions } from 'typeorm';
 import { Express } from 'express';
 
